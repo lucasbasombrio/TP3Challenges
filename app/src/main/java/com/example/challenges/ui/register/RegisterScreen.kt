@@ -38,22 +38,20 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.challenges.R
+import com.example.challenges.ui.login.Poppins
 import com.example.challenges.ui.theme.ChallengesTheme
 
-// Define la fuente Poppins
-val Poppins = FontFamily(
-    Font(R.font.poppins_regular, FontWeight.Normal),
-    Font(R.font.poppins_bold, FontWeight.Bold)
-)
-
 @Composable
-fun RegisterScreen(modifier: Modifier = Modifier) {
+fun RegisterScreen(
+    onHomeClick: () -> Unit,
+    onLoginClick: () -> Unit,
+    modifier: Modifier = Modifier
+) {
     Box(
         modifier = modifier
             .background(Color.White)
             .padding(top = 24.dp)
     ) {
-        // Círculo gris de fondo (decorativo, detrás de todo)
         Box(
             modifier = Modifier
                 .size(350.dp)
@@ -69,7 +67,6 @@ fun RegisterScreen(modifier: Modifier = Modifier) {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.SpaceEvenly
         ) {
-            // Bloque de título y subtítulo
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = Modifier.padding(top = 20.dp)
@@ -85,7 +82,6 @@ fun RegisterScreen(modifier: Modifier = Modifier) {
                     textAlign = TextAlign.Center,
                     modifier = Modifier.padding(bottom = 5.dp)
                 )
-
                 Text(
                     text = "Create an account so you can explore all the existing jobs",
                     style = TextStyle(
@@ -99,7 +95,6 @@ fun RegisterScreen(modifier: Modifier = Modifier) {
                 )
             }
 
-            // Campo de Email
             var emailText by remember { mutableStateOf("") }
             BasicTextField(
                 value = emailText,
@@ -122,7 +117,6 @@ fun RegisterScreen(modifier: Modifier = Modifier) {
                 }
             )
 
-            // Campo de Password
             var passwordText by remember { mutableStateOf("") }
             BasicTextField(
                 value = passwordText,
@@ -145,7 +139,6 @@ fun RegisterScreen(modifier: Modifier = Modifier) {
                 }
             )
 
-            // Campo de Confirmar Password
             var confirmPasswordText by remember { mutableStateOf("") }
             BasicTextField(
                 value = confirmPasswordText,
@@ -168,7 +161,6 @@ fun RegisterScreen(modifier: Modifier = Modifier) {
                 }
             )
 
-            // Botón "Sign up"
             Button(
                 onClick = { /* TODO */ },
                 colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF1F41BB)),
@@ -193,12 +185,11 @@ fun RegisterScreen(modifier: Modifier = Modifier) {
                 )
             }
 
-
-            TextButton(onClick = { /* TODO */ }) {
+            TextButton(onClick = onLoginClick) {
                 Text(
                     text = "Already have an account",
                     style = TextStyle(
-                        fontFamily = com.example.challenges.ui.login.Poppins,
+                        fontFamily = Poppins,
                         fontWeight = FontWeight.Normal,
                         fontSize = 14.sp,
                         color = Color.Black
@@ -206,7 +197,6 @@ fun RegisterScreen(modifier: Modifier = Modifier) {
                 )
             }
 
-            // Texto "Or continue with" y los íconos de redes sociales
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = Modifier.padding(top = 10.dp)
@@ -214,7 +204,7 @@ fun RegisterScreen(modifier: Modifier = Modifier) {
                 Text(
                     text = "Or continue with",
                     style = TextStyle(
-                        fontFamily = com.example.challenges.ui.login.Poppins,
+                        fontFamily = Poppins,
                         fontWeight = FontWeight.Normal,
                         fontSize = 14.sp,
                         color = Color.Blue
@@ -224,7 +214,6 @@ fun RegisterScreen(modifier: Modifier = Modifier) {
                     horizontalArrangement = Arrangement.spacedBy(16.dp),
                     modifier = Modifier.padding(top = 8.dp)
                 ) {
-                    // Ícono de Google con fondo gris
                     Box(
                         modifier = Modifier
                             .size(48.dp)
@@ -239,7 +228,6 @@ fun RegisterScreen(modifier: Modifier = Modifier) {
                             modifier = Modifier.size(32.dp)
                         )
                     }
-                    // Ícono de Facebook con fondo gris
                     Box(
                         modifier = Modifier
                             .size(48.dp)
@@ -254,7 +242,6 @@ fun RegisterScreen(modifier: Modifier = Modifier) {
                             modifier = Modifier.size(32.dp)
                         )
                     }
-                    // Ícono de Apple con fondo gris
                     Box(
                         modifier = Modifier
                             .size(48.dp)
@@ -271,15 +258,25 @@ fun RegisterScreen(modifier: Modifier = Modifier) {
                     }
                 }
             }
+            TextButton(onClick = onHomeClick) {
+                Text(
+                    text = "Back to Home",
+                    style = TextStyle(
+                        fontFamily = Poppins,
+                        fontWeight = FontWeight.Normal,
+                        fontSize = 14.sp,
+                        color = Color.Black
+                    )
+                )
+            }
         }
     }
 }
 
-
 @Preview(showBackground = true)
 @Composable
-fun LoginScreenPreview() {
+fun RegisterScreenPreview() {
     ChallengesTheme {
-        RegisterScreen()
+        RegisterScreen(onHomeClick = {}, onLoginClick = {})
     }
 }

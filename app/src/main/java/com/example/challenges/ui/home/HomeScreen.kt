@@ -33,7 +33,6 @@ import com.example.challenges.ui.theme.ChallengesTheme
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.systemBarsPadding
 
-
 // Define la fuente Poppins
 val Poppins = FontFamily(
     Font(R.font.poppins_regular, FontWeight.Normal),
@@ -41,40 +40,38 @@ val Poppins = FontFamily(
 )
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(
+    onLoginClick: () -> Unit,
+    onRegisterClick: () -> Unit
+) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White) // Fondo blanco explícito
-            //.padding(vertical = 80.dp),
-            .systemBarsPadding() // Agrega padding automático para la barra de estado
-            .padding(vertical = 40.dp), // Ajusta el padding si es necesario
+            .background(Color.White)
+            .systemBarsPadding()
+            .padding(vertical = 40.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(24.dp)
     ) {
         Box(
-            contentAlignment = Alignment.Center // Centra la imagen dentro del círculo
+            contentAlignment = Alignment.Center
         ) {
-            // Fondo gris (círculo)
             Box(
                 modifier = Modifier
                     .size(350.dp)
-                    .offset(x = (150.dp), y = (-150.dp)) // Mueve solo el círculo
+                    .offset(x = 150.dp, y = -150.dp)
                     .clip(CircleShape)
                     .background(Color(0xFFF8F9FF), shape = CircleShape)
             )
-
-            // Imagen (SVG desde drawable)
             Image(
                 painter = painterResource(id = R.drawable.welcome_image),
                 contentDescription = "Illustration",
                 modifier = Modifier
-                    .size(300.dp) // Tamaño de la imagen
-                    .padding(bottom = 0.dp) // Ajusta el padding si es necesario
+                    .size(300.dp)
+                    .padding(bottom = 0.dp)
             )
         }
 
-        // Título
         Text(
             text = "Discover Your\nDream Job Here",
             style = TextStyle(
@@ -87,7 +84,6 @@ fun HomeScreen() {
             modifier = Modifier.padding(bottom = 16.dp)
         )
 
-        // Subtítulo
         Text(
             text = "Explore all the existing job roles based on your interest and study major",
             style = TextStyle(
@@ -100,13 +96,11 @@ fun HomeScreen() {
             modifier = Modifier.padding(bottom = 24.dp)
         )
 
-        // Fila para los botones
         Row(
             horizontalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            // Botón "Login"
             Button(
-                onClick = { /*TODO*/ },
+                onClick = onLoginClick,
                 colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF1E3A8A))
             ) {
                 Text(
@@ -119,12 +113,10 @@ fun HomeScreen() {
                     )
                 )
             }
-
-            // Botón "Register" con borde actualizado
             Button(
-                onClick = { /*TODO*/ },
+                onClick = onRegisterClick,
                 colors = ButtonDefaults.buttonColors(containerColor = Color.White),
-                border = ButtonDefaults.outlinedButtonBorder(enabled = true) // Nueva sintaxis
+                border = ButtonDefaults.outlinedButtonBorder(enabled = true)
             ) {
                 Text(
                     text = "Register",
@@ -144,6 +136,6 @@ fun HomeScreen() {
 @Composable
 fun HomeScreenPreview() {
     ChallengesTheme {
-        HomeScreen()
+        HomeScreen(onLoginClick = {}, onRegisterClick = {})
     }
 }

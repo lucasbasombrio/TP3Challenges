@@ -1,82 +1,54 @@
 package com.example.challenges
 
-import AppHolaMundo
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
-import androidx.compose.material3.Button
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.FloatingActionButton
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.example.challenges.ui.home.HomeScreen
 import com.example.challenges.ui.login.LoginScreen
 import com.example.challenges.ui.register.RegisterScreen
 import com.example.challenges.ui.theme.ChallengesTheme
-            //WELCOME
+
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //enableEdgeToEdge()
         setContent {
             ChallengesTheme {
+                val navController = rememberNavController()
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    HomeScreen()
+                    NavHost(
+                        navController = navController,
+                        startDestination = "home", // Pantalla inicial
+                        modifier = Modifier.padding(innerPadding)
+                    ) {
+                        composable("home") {
+                            HomeScreen(
+                                onLoginClick = { navController.navigate("login") },
+                                onRegisterClick = { navController.navigate("register") }
+                            )
+                        }
+                        composable("login") {
+                            LoginScreen(
+                                onHomeClick = { navController.navigate("home") },
+                                onRegisterClick = { navController.navigate("register") }
+                            )
+                        }
+                        composable("register") {
+                            RegisterScreen(
+                                onHomeClick = { navController.navigate("home") },
+                                onLoginClick = { navController.navigate("login") }
+                            )
+                        }
+                    }
                 }
             }
         }
     }
 }
-
-            //LOGIN
-//class MainActivity : ComponentActivity() {
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        //enableEdgeToEdge()
-//        setContent {
-//            ChallengesTheme {
-//                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-//                    LoginScreen(
-//                        modifier = Modifier
-//                            .fillMaxSize()
-//                            .padding(innerPadding)
-//                    )
-//                }
-//            }
-//        }
-//    }
-//}
-
-            //REGISTER
-//class MainActivity : ComponentActivity() {
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        //enableEdgeToEdge()
-//        setContent {
-//            ChallengesTheme {
-//                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-//                    RegisterScreen(
-//                        modifier = Modifier
-//                            .fillMaxSize()
-//                            .padding(innerPadding)
-//                    )
-//                }
-//            }
-//        }
-//    }
-//}
-
-

@@ -47,22 +47,24 @@ val Poppins = FontFamily(
 )
 
 @Composable
-fun LoginScreen(modifier: Modifier = Modifier) {
+fun LoginScreen(
+    onHomeClick: () -> Unit,
+    onRegisterClick: () -> Unit,
+    modifier: Modifier = Modifier
+) {
     Box(
         modifier = modifier
             .background(Color.White)
-            .padding(top = 24.dp) // Añadimos un padding superior para respetar la barra de estado
+            .padding(top = 24.dp)
     ) {
-        // Círculo gris de fondo (decorativo, detrás de todo)
         Box(
             modifier = Modifier
                 .size(350.dp)
-                .offset(x = 150.dp, y = -150.dp) // Eliminamos el offset negativo y ajustamos la posición
+                .offset(x = 150.dp, y = -150.dp)
                 .clip(CircleShape)
                 .background(Color(0xFFF8F9FF), shape = CircleShape)
         )
 
-        // Column con los elementos, centrada y espaciada
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -70,12 +72,10 @@ fun LoginScreen(modifier: Modifier = Modifier) {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.SpaceEvenly
         ) {
-            // Bloque de título y subtítulo
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = Modifier.padding(top = 20.dp)
             ) {
-                // Título
                 Text(
                     text = "Login here",
                     style = TextStyle(
@@ -87,8 +87,6 @@ fun LoginScreen(modifier: Modifier = Modifier) {
                     textAlign = TextAlign.Center,
                     modifier = Modifier.padding(bottom = 5.dp)
                 )
-
-                // Subtítulo
                 Text(
                     text = "Welcome back you’ve been missed!",
                     style = TextStyle(
@@ -102,9 +100,7 @@ fun LoginScreen(modifier: Modifier = Modifier) {
                 )
             }
 
-            // Estado para el campo de Email
             var emailText by remember { mutableStateOf("") }
-            // Campo de Email
             BasicTextField(
                 value = emailText,
                 onValueChange = { emailText = it },
@@ -139,9 +135,7 @@ fun LoginScreen(modifier: Modifier = Modifier) {
                 }
             )
 
-            // Estado para el campo de Password
             var passwordText by remember { mutableStateOf("") }
-            // Campo de Password y "Forgot your Password?" alineado a la derecha
             Column(
                 modifier = Modifier.fillMaxWidth()
             ) {
@@ -178,8 +172,6 @@ fun LoginScreen(modifier: Modifier = Modifier) {
                         }
                     }
                 )
-
-                // Enlace "Forgot your Password?" alineado a la derecha
                 TextButton(
                     onClick = { /* TODO */ },
                     modifier = Modifier
@@ -198,7 +190,6 @@ fun LoginScreen(modifier: Modifier = Modifier) {
                 }
             }
 
-            // Botón "Sign in" con sombra y radio
             Button(
                 onClick = { /* TODO */ },
                 colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF1F41BB)),
@@ -223,8 +214,7 @@ fun LoginScreen(modifier: Modifier = Modifier) {
                 )
             }
 
-            // Texto "Create new account"
-            TextButton(onClick = { /* TODO */ }) {
+            TextButton(onClick = onRegisterClick) {
                 Text(
                     text = "Create new account",
                     style = TextStyle(
@@ -236,7 +226,6 @@ fun LoginScreen(modifier: Modifier = Modifier) {
                 )
             }
 
-            // Texto "Or continue with" y los íconos de redes sociales
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = Modifier.padding(top = 10.dp)
@@ -254,7 +243,6 @@ fun LoginScreen(modifier: Modifier = Modifier) {
                     horizontalArrangement = Arrangement.spacedBy(16.dp),
                     modifier = Modifier.padding(top = 8.dp)
                 ) {
-                    // Ícono de Google con fondo gris
                     Box(
                         modifier = Modifier
                             .size(48.dp)
@@ -269,7 +257,6 @@ fun LoginScreen(modifier: Modifier = Modifier) {
                             modifier = Modifier.size(32.dp)
                         )
                     }
-                    // Ícono de Facebook con fondo gris
                     Box(
                         modifier = Modifier
                             .size(48.dp)
@@ -284,7 +271,6 @@ fun LoginScreen(modifier: Modifier = Modifier) {
                             modifier = Modifier.size(32.dp)
                         )
                     }
-                    // Ícono de Apple con fondo gris
                     Box(
                         modifier = Modifier
                             .size(48.dp)
@@ -301,6 +287,17 @@ fun LoginScreen(modifier: Modifier = Modifier) {
                     }
                 }
             }
+            TextButton(onClick = onHomeClick) {
+                Text(
+                    text = "Back to Home",
+                    style = TextStyle(
+                        fontFamily = Poppins,
+                        fontWeight = FontWeight.Normal,
+                        fontSize = 14.sp,
+                        color = Color.Black
+                    )
+                )
+            }
         }
     }
 }
@@ -309,6 +306,6 @@ fun LoginScreen(modifier: Modifier = Modifier) {
 @Composable
 fun LoginScreenPreview() {
     ChallengesTheme {
-        LoginScreen()
+        LoginScreen(onHomeClick = {}, onRegisterClick = {})
     }
 }
