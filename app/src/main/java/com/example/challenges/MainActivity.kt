@@ -22,6 +22,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.challenges.ui.home.HomeScreen
 import com.example.challenges.ui.theme.ChallengesTheme
 
 class MainActivity : ComponentActivity() {
@@ -29,8 +30,11 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            AppHolaMundo()
-
+            ChallengesTheme {
+                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                    HomeScreen()
+                }
+            }
         }
     }
 }
