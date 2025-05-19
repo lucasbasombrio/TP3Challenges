@@ -27,19 +27,19 @@ import com.example.challenges.ui.login.LoginScreen
 import com.example.challenges.ui.register.RegisterScreen
 import com.example.challenges.ui.theme.ChallengesTheme
             //WELCOME
-//class MainActivity : ComponentActivity() {
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        //enableEdgeToEdge()
-//        setContent {
-//            ChallengesTheme {
-//                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-//                    HomeScreen()
-//                }
-//            }
-//        }
-//    }
-//}
+class MainActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        //enableEdgeToEdge()
+        setContent {
+            ChallengesTheme {
+                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                    HomeScreen()
+                }
+            }
+        }
+    }
+}
 
             //LOGIN
 //class MainActivity : ComponentActivity() {
@@ -61,22 +61,22 @@ import com.example.challenges.ui.theme.ChallengesTheme
 //}
 
             //REGISTER
-class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        //enableEdgeToEdge()
-        setContent {
-            ChallengesTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    RegisterScreen(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .padding(innerPadding)
-                    )
-                }
-            }
-        }
-    }
-}
+//class MainActivity : ComponentActivity() {
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+//        //enableEdgeToEdge()
+//        setContent {
+//            ChallengesTheme {
+//                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+//                    RegisterScreen(
+//                        modifier = Modifier
+//                            .fillMaxSize()
+//                            .padding(innerPadding)
+//                    )
+//                }
+//            }
+//        }
+//    }
+//}
 
 

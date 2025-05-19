@@ -59,7 +59,7 @@ fun RegisterScreen(modifier: Modifier = Modifier) {
                 .size(350.dp)
                 .offset(x = 150.dp, y = -150.dp)
                 .clip(CircleShape)
-                .background(Color(0xFFECECEC), shape = CircleShape)
+                .background(Color(0xFFF8F9FF), shape = CircleShape)
         )
 
         Column(

@@ -61,7 +61,7 @@ fun HomeScreen() {
                     .size(350.dp)
                     .offset(x = (150.dp), y = (-150.dp)) // Mueve solo el círculo
                     .clip(CircleShape)
-                    .background(Color(0xFFECECEC), shape = CircleShape)
+                    .background(Color(0xFFF8F9FF), shape = CircleShape)
             )
 
             // Imagen (SVG desde drawable)
@@ -76,7 +76,7 @@ fun HomeScreen() {
 
         // Título
         Text(
-            text = "DISCOVER YOUR DREAM JOB HERE",
+            text = "Discover Your\nDream Job Here",
             style = TextStyle(
                 fontFamily = Poppins,
                 fontWeight = FontWeight.Bold,

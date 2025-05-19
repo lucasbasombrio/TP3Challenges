@@ -59,7 +59,7 @@ fun LoginScreen(modifier: Modifier = Modifier) {
                 .size(350.dp)
                 .offset(x = 150.dp, y = -150.dp) // Eliminamos el offset negativo y ajustamos la posición
                 .clip(CircleShape)
-                .background(Color(0xFFECECEC), shape = CircleShape)
+                .background(Color(0xFFF8F9FF), shape = CircleShape)
         )
 
         // Column con los elementos, centrada y espaciada
