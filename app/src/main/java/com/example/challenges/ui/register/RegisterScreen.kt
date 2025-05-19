@@ -1,4 +1,4 @@
-package com.example.challenges.ui.login
+package com.example.challenges.ui.register
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -47,22 +47,21 @@ val Poppins = FontFamily(
 )
 
 @Composable
-fun LoginScreen(modifier: Modifier = Modifier) {
+fun RegisterScreen(modifier: Modifier = Modifier) {
     Box(
         modifier = modifier
             .background(Color.White)
-            .padding(top = 24.dp) // Añadimos un padding superior para respetar la barra de estado
+            .padding(top = 24.dp)
     ) {
         // Círculo gris de fondo (decorativo, detrás de todo)
         Box(
             modifier = Modifier
                 .size(350.dp)
-                .offset(x = 150.dp, y = -150.dp) // Eliminamos el offset negativo y ajustamos la posición
+                .offset(x = 150.dp, y = -150.dp)
                 .clip(CircleShape)
                 .background(Color(0xFFECECEC), shape = CircleShape)
         )
 
-        // Column con los elementos, centrada y espaciada
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -75,9 +74,8 @@ fun LoginScreen(modifier: Modifier = Modifier) {
                 horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = Modifier.padding(top = 20.dp)
             ) {
-                // Título
                 Text(
-                    text = "Login here",
+                    text = "Create Account",
                     style = TextStyle(
                         fontFamily = Poppins,
                         fontWeight = FontWeight.Bold,
@@ -88,13 +86,12 @@ fun LoginScreen(modifier: Modifier = Modifier) {
                     modifier = Modifier.padding(bottom = 5.dp)
                 )
 
-                // Subtítulo
                 Text(
-                    text = "Welcome back you’ve been missed!",
+                    text = "Create an account so you can explore all the existing jobs",
                     style = TextStyle(
                         fontFamily = Poppins,
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 25.sp,
+                        fontWeight = FontWeight.Normal,
+                        fontSize = 14.sp,
                         color = Color.Black
                     ),
                     textAlign = TextAlign.Center,
@@ -102,9 +99,8 @@ fun LoginScreen(modifier: Modifier = Modifier) {
                 )
             }
 
-            // Estado para el campo de Email
-            var emailText by remember { mutableStateOf("") }
             // Campo de Email
+            var emailText by remember { mutableStateOf("") }
             BasicTextField(
                 value = emailText,
                 onValueChange = { emailText = it },
@@ -119,86 +115,60 @@ fun LoginScreen(modifier: Modifier = Modifier) {
                     color = Color.Black
                 ),
                 decorationBox = { innerTextField ->
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        if (emailText.isEmpty()) {
-                            Text(
-                                text = "Email",
-                                style = TextStyle(
-                                    fontFamily = Poppins,
-                                    fontWeight = FontWeight.Normal,
-                                    fontSize = 16.sp,
-                                    color = Color.Gray
-                                )
-                            )
-                        }
-                        innerTextField()
+                    if (emailText.isEmpty()) {
+                        Text("Email", style = TextStyle(color = Color.Gray))
                     }
+                    innerTextField()
                 }
             )
 
-            // Estado para el campo de Password
+            // Campo de Password
             var passwordText by remember { mutableStateOf("") }
-            // Campo de Password y "Forgot your Password?" alineado a la derecha
-            Column(
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                BasicTextField(
-                    value = passwordText,
-                    onValueChange = { passwordText = it },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .background(Color(0xFFF5F5F5), shape = RoundedCornerShape(8.dp))
-                        .padding(horizontal = 16.dp, vertical = 12.dp),
-                    textStyle = TextStyle(
-                        fontFamily = Poppins,
-                        fontWeight = FontWeight.Normal,
-                        fontSize = 16.sp,
-                        color = Color.Black
-                    ),
-                    decorationBox = { innerTextField ->
-                        Row(
-                            modifier = Modifier.fillMaxWidth(),
-                            verticalAlignment = Alignment.CenterVertically
-                        ) {
-                            if (passwordText.isEmpty()) {
-                                Text(
-                                    text = "Password",
-                                    style = TextStyle(
-                                        fontFamily = Poppins,
-                                        fontWeight = FontWeight.Normal,
-                                        fontSize = 16.sp,
-                                        color = Color.Gray
-                                    )
-                                )
-                            }
-                            innerTextField()
-                        }
+            BasicTextField(
+                value = passwordText,
+                onValueChange = { passwordText = it },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(Color(0xFFF5F5F5), shape = RoundedCornerShape(8.dp))
+                    .padding(horizontal = 16.dp, vertical = 12.dp),
+                textStyle = TextStyle(
+                    fontFamily = Poppins,
+                    fontWeight = FontWeight.Normal,
+                    fontSize = 16.sp,
+                    color = Color.Black
+                ),
+                decorationBox = { innerTextField ->
+                    if (passwordText.isEmpty()) {
+                        Text("Password", style = TextStyle(color = Color.Gray))
                     }
-                )
-
-                // Enlace "Forgot your Password?" alineado a la derecha
-                TextButton(
-                    onClick = { /* TODO */ },
-                    modifier = Modifier
-                        .align(Alignment.End)
-                        .padding(top = 4.dp)
-                ) {
-                    Text(
-                        text = "Forgot your Password?",
-                        style = TextStyle(
-                            fontFamily = Poppins,
-                            fontWeight = FontWeight.Normal,
-                            fontSize = 14.sp,
-                            color = Color.Blue
-                        )
-                    )
+                    innerTextField()
                 }
-            }
+            )
 
-            // Botón "Sign in" con sombra y radio
+            // Campo de Confirmar Password
+            var confirmPasswordText by remember { mutableStateOf("") }
+            BasicTextField(
+                value = confirmPasswordText,
+                onValueChange = { confirmPasswordText = it },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(Color(0xFFF5F5F5), shape = RoundedCornerShape(8.dp))
+                    .padding(horizontal = 16.dp, vertical = 12.dp),
+                textStyle = TextStyle(
+                    fontFamily = Poppins,
+                    fontWeight = FontWeight.Normal,
+                    fontSize = 16.sp,
+                    color = Color.Black
+                ),
+                decorationBox = { innerTextField ->
+                    if (confirmPasswordText.isEmpty()) {
+                        Text("Confirm Password", style = TextStyle(color = Color.Gray))
+                    }
+                    innerTextField()
+                }
+            )
+
+            // Botón "Sign up"
             Button(
                 onClick = { /* TODO */ },
                 colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF1F41BB)),
@@ -213,7 +183,7 @@ fun LoginScreen(modifier: Modifier = Modifier) {
                 shape = RoundedCornerShape(10.dp)
             ) {
                 Text(
-                    text = "Sign in",
+                    text = "Sign up",
                     style = TextStyle(
                         fontFamily = Poppins,
                         fontWeight = FontWeight.Bold,
@@ -223,12 +193,12 @@ fun LoginScreen(modifier: Modifier = Modifier) {
                 )
             }
 
-            // Texto "Create new account"
+
             TextButton(onClick = { /* TODO */ }) {
                 Text(
-                    text = "Create new account",
+                    text = "Already have an account",
                     style = TextStyle(
-                        fontFamily = Poppins,
+                        fontFamily = com.example.challenges.ui.login.Poppins,
                         fontWeight = FontWeight.Normal,
                         fontSize = 14.sp,
                         color = Color.Black
@@ -244,7 +214,7 @@ fun LoginScreen(modifier: Modifier = Modifier) {
                 Text(
                     text = "Or continue with",
                     style = TextStyle(
-                        fontFamily = Poppins,
+                        fontFamily = com.example.challenges.ui.login.Poppins,
                         fontWeight = FontWeight.Normal,
                         fontSize = 14.sp,
                         color = Color.Blue
@@ -305,10 +275,11 @@ fun LoginScreen(modifier: Modifier = Modifier) {
     }
 }
 
+
 @Preview(showBackground = true)
 @Composable
 fun LoginScreenPreview() {
     ChallengesTheme {
-        LoginScreen()
+        RegisterScreen()
     }
 }

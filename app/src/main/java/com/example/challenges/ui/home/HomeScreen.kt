@@ -30,6 +30,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.challenges.R
 import com.example.challenges.ui.theme.ChallengesTheme
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.systemBarsPadding
+
 
 // Define la fuente Poppins
 val Poppins = FontFamily(
@@ -43,7 +46,9 @@ fun HomeScreen() {
         modifier = Modifier
             .fillMaxSize()
             .background(Color.White) // Fondo blanco explícito
-            .padding(vertical = 80.dp),
+            //.padding(vertical = 80.dp),
+            .systemBarsPadding() // Agrega padding automático para la barra de estado
+            .padding(vertical = 40.dp), // Ajusta el padding si es necesario
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(24.dp)
     ) {

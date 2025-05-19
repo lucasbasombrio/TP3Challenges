@@ -23,21 +23,60 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.challenges.ui.home.HomeScreen
+import com.example.challenges.ui.login.LoginScreen
+import com.example.challenges.ui.register.RegisterScreen
 import com.example.challenges.ui.theme.ChallengesTheme
+            //WELCOME
+//class MainActivity : ComponentActivity() {
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+//        //enableEdgeToEdge()
+//        setContent {
+//            ChallengesTheme {
+//                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+//                    HomeScreen()
+//                }
+//            }
+//        }
+//    }
+//}
 
+            //LOGIN
+//class MainActivity : ComponentActivity() {
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+//        //enableEdgeToEdge()
+//        setContent {
+//            ChallengesTheme {
+//                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+//                    LoginScreen(
+//                        modifier = Modifier
+//                            .fillMaxSize()
+//                            .padding(innerPadding)
+//                    )
+//                }
+//            }
+//        }
+//    }
+//}
+
+            //REGISTER
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+        //enableEdgeToEdge()
         setContent {
             ChallengesTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    HomeScreen()
+                    RegisterScreen(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(innerPadding)
+                    )
                 }
             }
         }
     }
 }
-
 
 
