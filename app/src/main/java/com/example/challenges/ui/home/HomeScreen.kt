@@ -53,10 +53,10 @@ fun HomeScreen() {
             // Fondo gris (círculo)
             Box(
                 modifier = Modifier
-                    .size(340.dp)
+                    .size(350.dp)
                     .offset(x = (150.dp), y = (-150.dp)) // Mueve solo el círculo
                     .clip(CircleShape)
-                    .background(Color(0xFFE5E7EB), shape = CircleShape)
+                    .background(Color(0xFFECECEC), shape = CircleShape)
             )
 
             // Imagen (SVG desde drawable)
